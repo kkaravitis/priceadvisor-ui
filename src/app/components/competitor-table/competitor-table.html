@@ -1,0 +1,28 @@
+<div>
+  <table mat-table [dataSource]="competitorPrices" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef> Product ID </th>
+      <td mat-cell *matCellDef="let row"> {{ row.productId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef> Product </th>
+      <td mat-cell *matCellDef="let row"> {{ row.productName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="competitorPrice">
+      <th mat-header-cell *matHeaderCellDef> Price (€) </th>
+      <td mat-cell *matCellDef="let row"> {{ row.competitorPrice | number: '1.2-2' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef> Last Updated </th>
+      <td mat-cell *matCellDef="let row"> {{ row.updatedAt | date: 'short' }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+</div>

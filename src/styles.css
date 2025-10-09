@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+:host {
+  display: block;
+  padding: 1rem;
+  background-color: #f4f9ff;
+  color: #1a237e;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  overflow-x: auto; /* enables scroll on small screens */
+}
+
+h2 {
+  color: #0d47a1;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  padding: 12px;
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #bbdefb;
+}
+
+td {
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #1a237e;
+  border-bottom: 1px solid #e3f2fd;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f8ff;
+}
+
+tr.just-arrived {
+  background-color: #c8e6ff !important;
+  animation: pulseIn 0.8s ease-in-out;
+}
+
+@keyframes pulseIn {
+  from {
+    background-color: #90caf9;
+  }
+  to {
+    background-color: #c8e6ff;
+  }
+}
+
+.price-positive {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.price-negative {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* Small screen tweaks */
+@media screen and (max-width: 768px) {
+  th, td {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  table {
+    min-width: 100%;
+  }
+}

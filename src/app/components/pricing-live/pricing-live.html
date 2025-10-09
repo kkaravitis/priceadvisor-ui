@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="table-container">
+    <h2>Live Pricing</h2>
+    <table mat-table [dataSource]="pricingResults" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+        <td mat-cell *matCellDef="let row"> {{ row.timestamp | date:'short' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productId">
+        <th mat-header-cell *matHeaderCellDef> Product ID </th>
+        <td mat-cell *matCellDef="let row"> {{ row.productId }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef> Product Name </th>
+        <td mat-cell *matCellDef="let row"> {{ row.productName }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price (€) </th>
+        <td mat-cell *matCellDef="let row"> {{ row.price | number:'1.2-2' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="priceChangePercent">
+        <th mat-header-cell *matHeaderCellDef> % Change </th>
+        <td mat-cell *matCellDef="let row">
+          <span [ngClass]="{'positive': row.priceChangePercent! > 0, 'negative': row.priceChangePercent! < 0}">
+            {{ row.priceChangePercent | number:'1.2-2' }}%
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef> Curr. </th>
+        <td mat-cell *matCellDef="let row"> {{ row.currency }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demandMetric">
+        <th mat-header-cell *matHeaderCellDef> Demand </th>
+        <td mat-cell *matCellDef="let row"> {{ row.demandMetric }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="competitorPrice">
+        <th mat-header-cell *matHeaderCellDef> Competitor </th>
+        <td mat-cell *matCellDef="let row"> {{ row.competitorPrice }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="inventoryLevel">
+        <th mat-header-cell *matHeaderCellDef> Stock </th>
+        <td mat-cell *matCellDef="let row"> {{ row.inventoryLevel }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns;"
+          [class.new-row]="row.justArrived">
+      </tr>
+    </table>
+  </div>
+  <div class="form-container">
+    <h2>Simulate Product Event</h2>
+    <app-event-sender></app-event-sender>
+  </div>
+</div>
+
+<div class="container">
+  <div class="table-container">
+    <h2>Competitor prices</h2>
+    <app-competitor-table></app-competitor-table>
+  </div>
+  <div class="form-container">
+    <h2>Update competitor prices</h2>
+    <!-- <app-event-sender></app-event-sender> -->
+    <app-competitor-price-updater></app-competitor-price-updater>
+  </div>
+</div>
+
+
