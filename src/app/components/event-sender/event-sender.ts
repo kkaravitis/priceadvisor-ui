@@ -99,9 +99,6 @@ export class EventSender {
       case EventType.Order:
         payload.quantity = this.eventForm.value.quantity;
         break;
-      case EventType.Order:
-        payload.quantity = this.eventForm.value.quantity;
-        break;
       case EventType.BusinessRule:
         payload.min = this.eventForm.value.min;
         payload.max = this.eventForm.value.max;

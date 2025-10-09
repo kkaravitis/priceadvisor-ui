@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { AppConfigService } from '../config/app-config.service';
 
 export interface CompetitorPriceDto {
   productId: string;
@@ -13,12 +14,14 @@ export interface CompetitorPriceDto {
   providedIn: 'root'
 })
 export class CompetitorPriceService {
-  private readonly base = 'http://localhost:8080/competitor-api/competitor-prices';
-
-  private refreshSubject = new Subject<void>();
+  private readonly base: string;
+  private readonly refreshSubject = new Subject<void>();
   readonly refresh$ = this.refreshSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, cfg: AppConfigService) { 
+    const c = cfg.config;
+    this.base = `${c.apiBaseUrl}${c.competitorApiPath}/competitor-prices`;
+  }
 
   list(): Observable<CompetitorPriceDto[]> {
     return this.http.get<CompetitorPriceDto[]>(this.base);

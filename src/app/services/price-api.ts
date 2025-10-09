@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AppConfigService } from '../config/app-config.service';
 
 export interface PricingResult {
   timestamp: string;
@@ -19,11 +20,14 @@ export interface PricingResult {
   providedIn: 'root'
 })
 export class PriceApiService {
-  private baseUrl = 'http://localhost:8080/pricing-api';
+  private readonly base: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, cfg: AppConfigService) {
+    const c = cfg.config;
+    this.base = `${c.apiBaseUrl}${c.pricingApiPath}`;
+  }
 
   getLatest(): Observable<PricingResult[]> {
-    return this.http.get<PricingResult[]>(`${this.baseUrl}/prices/latest`);
+    return this.http.get<PricingResult[]>(`${this.base}/prices/latest`);
   }
 }

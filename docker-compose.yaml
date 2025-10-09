@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  ui:
+    image: priceadvisor-ui:latest
+    container_name: priceadvisor-ui
+    ports:
+      - "7000:80"
+    volumes:
+      - ./ops/app-config.prod.json:/usr/share/nginx/html/app-config.json:ro
+    restart: unless-stopped
+    networks: 
+      - pricing-net
+
+networks:
+  pricing-net:
+    external: true
