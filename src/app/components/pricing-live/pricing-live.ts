@@ -25,6 +25,8 @@ import { CompetitorPriceUpdater } from '../competitor-price-updater/competitor-p
   ]
 })
 export class PricingLiveComponent implements OnInit {
+  currentYear = new Date().getFullYear();
+  
   pricingResults: PricingResult[] = [];
 
   pricingResultsMap = new Map<string, PricingResult>();
@@ -56,6 +58,10 @@ export class PricingLiveComponent implements OnInit {
             justArrived: true
           });
 
+          this.pricingResults = Array
+          .from(this.pricingResultsMap.values())
+          .sort((a, b) => a.productId.localeCompare(b.productId));
+
           this.pricingResults = Array.from(this.pricingResultsMap.values());
 
           // Remove justArrived flag after 3 seconds
@@ -67,7 +73,7 @@ export class PricingLiveComponent implements OnInit {
                 justArrived: false
               });
               this.pricingResults = Array.from(this.pricingResultsMap.values())
-                .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+                .sort((a, b) => a.productId.localeCompare(b.productId));
             }
           }, 3000);
         }
