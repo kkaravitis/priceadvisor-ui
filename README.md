@@ -1,5 +1,5 @@
 # PriceadvisorUi
-Uer interface for presenting the Dynamic Pricing advisor system.
+User interface for controlling and presenting the Dynamic Pricing advisor system.
 
 <img src="./img/Capture.JPG" />
 
