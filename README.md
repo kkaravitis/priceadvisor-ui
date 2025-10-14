@@ -1,4 +1,10 @@
 # PriceadvisorUi
+Uer interface for presenting the Dynamic Pricing advisor system.
+
+<img src="./img/Capture.JPG" />
+
+
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
 

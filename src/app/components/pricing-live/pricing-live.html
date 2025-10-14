@@ -26,8 +26,18 @@
       <ng-container matColumnDef="priceChangePercent">
         <th mat-header-cell *matHeaderCellDef> % Change </th>
         <td mat-cell *matCellDef="let row">
-          <span [ngClass]="{'positive': row.priceChangePercent! > 0, 'negative': row.priceChangePercent! < 0}">
-            {{ row.priceChangePercent | number:'1.2-2' }}%
+          <span
+            [ngClass]="{
+              'positive': row.priceChangePercent > 0,
+              'negative': row.priceChangePercent < 0,
+              'neutral': !row.priceChangePercent
+            }"
+          >
+            @if (row.priceChangePercent !== null && row.priceChangePercent !== undefined) {
+              @if (row.priceChangePercent > 0) { ▲ }
+              @if (row.priceChangePercent < 0) { ▼ }
+              {{ row.priceChangePercent | number:'1.2-2' }}%
+            }
           </span>
         </td>
       </ng-container>

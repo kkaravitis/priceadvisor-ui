@@ -25,3 +25,23 @@
 h2 {
   margin-bottom: 1rem;
 }
+
+/* Color cues for % Change column */
+.positive {
+  color: #2e7d32;       /* dark green */
+  font-weight: 600;
+}
+
+.negative {
+  color: #c62828;       /* dark red */
+  font-weight: 600;
+}
+
+.neutral {
+  color: inherit;       /* default text color */
+}
+
+/* Smooth visual transition when table updates */
+td {
+  transition: color 0.3s ease;
+}
