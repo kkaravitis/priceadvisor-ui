@@ -36,7 +36,8 @@ export class PricingLiveComponent implements OnInit {
     'productName',
     'price',
     'priceChangePercent',
-    'demandMetric'
+    'demandMetric',
+    'inventoryLevel'
   ];
 
   constructor(private priceApiService: PriceApiService,
