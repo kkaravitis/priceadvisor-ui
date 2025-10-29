@@ -73,8 +73,6 @@ export class PricingLiveComponent implements OnInit {
                 ...updated,
                 justArrived: false
               });
-              this.pricingResults = Array.from(this.pricingResultsMap.values())
-                .sort((a, b) => a.productId.localeCompare(b.productId));
             }
           }, 3000);
         }
